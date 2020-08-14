@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "API REST",
+  "main": "serve.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/adrienzagar/learn-node.git"
+  },
+  "author": "zgr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrienzagar/learn-node/issues"
+  },
+  "homepage": "https://github.com/adrienzagar/learn-node#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}

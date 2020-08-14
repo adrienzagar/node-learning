@@ -1,0 +1,19 @@
+{
+  "name": "server-api",
+  "version": "1.0.0",
+  "description": "basic API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrienzagar/learn-node.git"
+  },
+  "author": "zgr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrienzagar/learn-node/issues"
+  },
+  "homepage": "https://github.com/adrienzagar/learn-node#readme"
+}
