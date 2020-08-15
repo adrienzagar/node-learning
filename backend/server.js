@@ -1,8 +1,41 @@
 const express = require('express')
-products = require("./products")
+const mongoose = require("mongoose")
+// products = require("./products")
 categories = require("./categories")
 const app = express()
 const port = 8080
+const DB = 'mongodb://localhost/messieurs_croquent'
+const Schema = mongoose.Schema
+mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('Connected to DB'))
+
+const productSchema = new Schema ({
+  name: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  picture: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true,
+    name: {
+      type: String,
+      required: true
+    }
+  }
+})
+
+const Product = mongoose.model("Product", productSchema )
 
 app.get('/', (req, res) => {
   res.send(`<p>Basic Api Rest</p>
@@ -19,7 +52,14 @@ app.get('/api', (req, res) => {
   })
 
   app.get('/api/products', (req, res) => {
-    res.send(products)
+    Product.find({}, (error, products) => {
+      if (error) {
+        res.status(400).error(error)
+        return
+      }
+      console.log(products)
+      res.send(products)
+    })
   })
 
   app.get('/api/categories', (req, res) => {
