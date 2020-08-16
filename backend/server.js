@@ -2,10 +2,12 @@ const express = require('express')
 const mongoose = require("mongoose")
 // products = require("./products")
 categories = require("./categories")
+const bodyParser = require("body-parser")
 const app = express()
 const port = 8080
 const DB = 'mongodb://localhost/messieursCroquent'
 const Schema = mongoose.Schema
+app.use(bodyParser.json())
 mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('Connected to DB'))
 
 const productSchema = new Schema ({
@@ -106,7 +108,9 @@ app.post('/api/product/add', function(req, res) {
       "name": "Croque-Monsieur"
     }
   })
-  product.save(error => {
+  const { body } = req
+  const newProduct = new Product(body)
+  newProduct.save(error => {
     if(error) {
       res.status(400).send({
         error: `error adding new post ${error}`
